@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity OrderMaster.
+    -->
+    <changeSet id="20190822085213-1" author="jhipster">
+     	<createSequence sequenceName="order_pk_seq" startValue="1" incrementBy="1" minValue="1" maxValue="99999" cycle="true" />
+       	<sql dbms="postgresql" splitStatements="false" stripComments="false">
+           <![CDATA[
+               CREATE OR REPLACE FUNCTION get_order_id()
+               RETURNS text
+               LANGUAGE sql
+               AS $function$
+                   SELECT 'ORD' || CAST(to_char(now() ,'YYMMDD') || lpad(nextval('order_pk_seq')::text,5,'0') as text);
+               $function$;
+           ]]>
+       	</sql>
+        <createTable tableName="order_master">
+        	<!-- 
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+             -->
+            <column name="order_id" type="varchar(30)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="customer_id" type="varchar(12)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_price" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_status" type="varchar(3)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+
+            <column name="order_shipping_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_order_master_order_shipping_id" />
+            </column>
+            <column name="order_payment_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_order_master_order_payment_id" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

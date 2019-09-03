@@ -1,0 +1,11 @@
+version: '2'
+services:
+    inesapi-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/inesapi/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=inesapi
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

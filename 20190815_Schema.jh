@@ -1,0 +1,66 @@
+
+/**
+ * MasterProvince entity.
+ * @author yosakre
+ */
+entity MasterProvince {
+	code String required maxlength (3),
+    name String required maxlength (50)
+}
+
+/**
+ * MasterCity entity.
+ * @author yosakre
+ */
+entity MasterCity {
+    name String required maxlength (50)
+}
+
+/**
+ * MasterAddress entity.
+ * @author yosakre
+ */
+entity MasterAddress {
+	mailno String required maxlength(9),
+	district String required maxlength(50),
+    address String required maxlength(150),
+    isUse Boolean,
+    isJabodetabek Boolean
+}
+
+/**
+ * MasterZipcode entity.
+ * @author yosakre
+ */
+entity MasterZipcode {
+    zipcode String required maxlength (7)
+}
+
+/**
+ * Pinpoint entity.
+ * @author yosakre
+ */
+entity Pinpoint {
+    lat String maxlength (200),
+    lng String maxlength (200)
+}
+
+relationship OneToMany {
+	MasterProvince{cityList} to MasterCity,
+	MasterCity{addressList} to MasterAddress,
+	MasterAddress{zipcodeList} to MasterZipcode
+}
+
+relationship OneToOne {
+	MasterAddress{pinList} to Pinpoint
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+//dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl

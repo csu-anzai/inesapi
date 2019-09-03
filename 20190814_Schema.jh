@@ -1,0 +1,32 @@
+entity Customer {
+	name String maxlength(40),
+    email String maxlength(70),
+    phoneNumber String maxlength(15),
+    userId String maxlength(30)
+}
+
+entity CustomerAddress {
+	address String  maxlength(150),
+    receiverName String maxlength(40),
+    receiverPhone String maxlength(15),
+    postalCode String maxlength(9),
+    lat String,
+    lng String
+}
+
+relationship OneToMany {
+	Customer{customerAddress} to CustomerAddress
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

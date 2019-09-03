@@ -1,0 +1,64 @@
+{
+    "name": "OrderMaster",
+    "fields": [
+        {
+            "fieldName": "customerId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 12
+        },
+        {
+            "fieldName": "totalPrice",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "orderStatus",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 3
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "orderShipping",
+            "otherEntityName": "orderShipping",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "orderMaster"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "orderPayment",
+            "otherEntityName": "orderPayment",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "orderMaster"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderItem",
+            "otherEntityName": "orderItem",
+            "otherEntityRelationshipName": "orderMaster"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderLoan",
+            "otherEntityName": "orderLoan",
+            "otherEntityRelationshipName": "orderMaster"
+        }
+    ],
+    "changelogDate": "20190822085213",
+    "entityTableName": "order_master",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

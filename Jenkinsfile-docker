@@ -1,0 +1,53 @@
+pipeline {
+
+	environment {
+		containerName = "${INES_SERVICE_NAME}"
+		imagesName = "dev/${INES_SERVICE_NAME}"
+	}
+	
+    agent any
+    tools {
+        maven "maven"
+        nodejs "node"
+    }
+	
+    stages {
+        stage('check') {
+            steps {
+				sh 'mvn -v'
+				sh 'npm -v'
+				checkout scm
+            }
+        }
+		
+		stage('validate'){
+			steps{
+				sh ''' docker stop "${containerName}" || true && docker rm "${containerName}" || true '''
+				sh ''' docker images -a | grep "${imagesName}" | awk '{print \$3}' | xargs --no-run-if-empty docker rmi --force '''
+			}
+		}
+		
+        stage('package') {
+            steps {
+				sh "chmod +x mvnw"
+                sh "./mvnw clean"
+            }
+        }
+		
+		stage('dockerize') {
+            steps {
+				sh "./mvnw clean package -P${PROFILE} -DskipTests"
+				archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+                sh './mvnw -P${PROFILE} package verify jib:dockerBuild -DskipTests -Dimage="${imagesName}"'
+            }
+        }
+		
+		stage('deploy') {
+            steps {
+				script {
+					sh "docker run -tid -p 7070:7070 -e SPRING_PROFILES_ACTIVE=${PROFILE} ${ENV_INES} --name ${containerName} ${imagesName}"
+				}
+			}
+        }
+    }
+}

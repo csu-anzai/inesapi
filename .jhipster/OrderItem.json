@@ -1,0 +1,50 @@
+{
+    "name": "OrderItem",
+    "fields": [
+        {
+            "fieldName": "productNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "qty",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemPrice",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "totalItemPrice",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "orderItemStatus",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 3
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "orderMaster",
+            "otherEntityName": "orderMaster",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190822085214",
+    "entityTableName": "order_item",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

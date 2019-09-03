@@ -1,0 +1,41 @@
+{
+    "name": "MasterProvince",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 3
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "masterCity",
+            "otherEntityRelationshipName": "masterProvince",
+            "relationshipName": "cityList"
+        }
+    ],
+    "changelogDate": "20190815074428",
+    "javadoc": "MasterProvince entity.\n@author yosakre",
+    "entityTableName": "master_province",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

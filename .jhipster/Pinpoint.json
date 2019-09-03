@@ -1,0 +1,32 @@
+{
+    "name": "Pinpoint",
+    "fields": [
+        {
+            "fieldName": "lat",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        },
+        {
+            "fieldName": "lng",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 200
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190815074432",
+    "javadoc": "Pinpoint entity.\n@author yosakre",
+    "entityTableName": "pinpoint",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

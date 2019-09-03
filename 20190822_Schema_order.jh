@@ -1,0 +1,53 @@
+entity OrderMaster {
+	customerId String maxlength(12)
+    totalPrice Long,
+    orderStatus String maxlength(3)
+}
+
+entity OrderItem {
+    productNo String maxlength(20),
+    qty Integer,
+    itemPrice Long,
+    totalItemPrice Long,
+    orderItemStatus String maxlength(3)
+}
+
+entity OrderLoan {
+    productNo String maxlength(20),
+    orderLoanStatus String maxlength(3),
+    returnDate Instant
+}
+
+entity OrderShipping {
+    customerAddressId Integer,
+    shippingMethod String maxlength(10),
+    shippingPrice Long
+}
+
+entity OrderPayment {
+    paymentMethod String maxlength(10),
+    amount Long
+}
+
+relationship OneToMany {
+	OrderMaster{OrderItem} to OrderItem,
+    OrderMaster{OrderLoan} to OrderLoan
+}
+
+relationship OneToOne {
+	OrderMaster{OrderShipping} to OrderShipping,
+    OrderMaster{OrderPayment} to OrderPayment
+}
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

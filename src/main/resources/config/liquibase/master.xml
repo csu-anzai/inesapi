@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190814101236_added_entity_Customer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190814101237_added_entity_CustomerAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190815144821_added_entity_MasterAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190815145514_added_entity_MasterZipcode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190821091005_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822064813_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826111746_added_entity_MenuType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826111846_added_entity_Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826111946_added_entity_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826113146_added_entity_Role.xml" relativeToChangelogFile="false"/>
+   
+    
+	<!-- Testing Purpose -->    
+    <include file="config/liquibase/changelog/20190820999999_added_entity_Test.xml" relativeToChangelogFile="false"/>
+    
+    <include file="config/liquibase/changelog/20190822085213_added_entity_OrderMaster.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085214_added_entity_OrderItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085215_added_entity_OrderLoan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085216_added_entity_OrderShipping.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085217_added_entity_OrderPayment.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+
+    <include file="config/liquibase/changelog/20190814101237_added_entity_constraints_CustomerAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190815145514_added_entity_constraints_MasterZipcode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190819142137_added_entity_constraints_CustomerAddressAndMasterAddress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085213_added_entity_constraints_OrderMaster.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085214_added_entity_constraints_OrderItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190822085215_added_entity_constraints_OrderLoan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190823031450_add_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190823031450_add_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826112046_added_entity_constraints_Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190826112146_added_entity_constraints_MenuRole.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

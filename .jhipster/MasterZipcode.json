@@ -1,0 +1,32 @@
+{
+    "name": "MasterZipcode",
+    "fields": [
+        {
+            "fieldName": "zipcode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 7
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "masterAddress",
+            "otherEntityName": "masterAddress",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190815074431",
+    "javadoc": "MasterZipcode entity.\n@author yosakre",
+    "entityTableName": "master_zipcode",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

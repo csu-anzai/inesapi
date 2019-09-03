@@ -1,0 +1,31 @@
+{
+    "name": "OrderShipping",
+    "fields": [
+        {
+            "fieldName": "customerAddressId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "shippingMethod",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "shippingPrice",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190822085216",
+    "entityTableName": "order_shipping",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,53 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   
+    <changeSet author="budimansus (generated)" id="1566456523847-1">
+	    <createTable tableName="product">
+          	<column name="product_code" type="varchar(255)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="image" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="minimum_quantity" type="INT"/>
+            <column name="price" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+			<column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="timestamp"/>	
+            <column name="last_modified_by" type="varchar(50)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="budimansus (generated)" id="1566456523847-2">
+    	<createSequence sequenceName="product_pk_seq" startValue="100" incrementBy="1"/>
+        <sql dbms="postgresql" splitStatements="false" stripComments="false">
+           <![CDATA[
+               CREATE OR REPLACE FUNCTION get_product_code()
+               RETURNS text
+               LANGUAGE sql
+               AS $function$
+                   SELECT 'PR' || CAST(lpad(nextval('product_pk_seq')::text,7,'0') as text);
+               $function$;
+           ]]>
+       	</sql>        
+    </changeSet>
+    
+</databaseChangeLog>

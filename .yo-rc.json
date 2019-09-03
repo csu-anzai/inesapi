@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "id.co.indoeskrim",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.8.2",
+    "applicationType": "monolith",
+    "baseName": "inesapi",
+    "packageName": "id.co.indoeskrim",
+    "packageFolder": "id/co/indoeskrim",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YjEyMGZmMWU0ZGRmYjJlN2VmNmM2MmEyNDIyNGMzNjVhNjVlMzg3MjdiNDEyYjM2YmExZTFiMjI4NDRlMzIyZjk2YTlhZmMxMWUwOTk1N2M5NWE3YTE3NGM3MTliOGM0MTI2ZmFmNDEyYmRjYTAzNzU0NjI1OTBmMDI1NDMzMzk=",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "skipClient": true
+  }
+}

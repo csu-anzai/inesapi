@@ -1,0 +1,38 @@
+{
+    "name": "MasterCity",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "masterProvince",
+            "otherEntityName": "masterProvince",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "masterAddress",
+            "otherEntityRelationshipName": "masterCity",
+            "relationshipName": "addressList"
+        }
+    ],
+    "changelogDate": "20190815074429",
+    "javadoc": "MasterCity entity.\n@author yosakre",
+    "entityTableName": "master_city",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

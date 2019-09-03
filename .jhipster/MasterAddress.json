@@ -1,0 +1,72 @@
+{
+    "name": "MasterAddress",
+    "fields": [
+        {
+            "fieldName": "mailno",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 9
+        },
+        {
+            "fieldName": "district",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 50
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 150
+        },
+        {
+            "fieldName": "isUse",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isJabodetabek",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "masterCity",
+            "otherEntityName": "masterCity",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "pinpoint",
+            "otherEntityRelationshipName": "masterAddress",
+            "relationshipName": "pinList",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "masterZipcode",
+            "otherEntityRelationshipName": "masterAddress",
+            "relationshipName": "zipcodeList"
+        }
+    ],
+    "changelogDate": "20190815074430",
+    "javadoc": "MasterAddress entity.\n@author yosakre",
+    "entityTableName": "master_address",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
